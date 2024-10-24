@@ -55,7 +55,7 @@ void traverse_directory(const std::string& query, const std::string& directory_p
         return;
     }
 
-    const auto num_threads = std::thread::hardware_concurrency();
+    const auto num_threads = std::max(std::thread::hardware_concurrency(), 1u);
 
     std::vector<std::thread> threads;
     threads.reserve(num_threads);
